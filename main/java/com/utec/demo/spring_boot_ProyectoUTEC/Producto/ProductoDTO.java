@@ -1,15 +1,17 @@
+
 package com.utec.demo.spring_boot_ProyectoUTEC.Producto;
 
 import org.springframework.web.bind.annotation.PostMapping;
 
 public class ProductoDTO {
     private String nombre;
-    private Double precio;
+    private Double precioBase;
+
     public ProductoDTO(){}
 
-    public  ProductoDTO( String nombre, Double precio){
+    public  ProductoDTO( String nombre, Double precioBase){
         this.nombre =nombre;
-        this.precio =precio;
+        this.precioBase =precioBase;
 
     }
 
@@ -21,12 +23,12 @@ public class ProductoDTO {
         this.nombre = nombre;
     }
 
-    public Double getPrecio() {
-        return precio;
+    public Double getprecioBase() {
+        return precioBase;
     }
 
-    public void setPrecio(Double precio) {
-        this.precio = precio;
+    public void setprecioBase(Double precioBase) {
+        this.precioBase = precioBase;
     }
 
 

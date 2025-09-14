@@ -61,8 +61,8 @@ public class ProductoController {
                             case "nombre":
                                 producto.setNombre((String)value);
                                 break;
-                            case "precio":
-                                producto.setPrecio(Double.valueOf(value.toString()));
+                            case "precioBase":
+                                producto.setPrecioBase(Double.valueOf(value.toString()));
                                 break;
                             case "stock":
                                 producto.setStock(Integer.valueOf(value.toString()));

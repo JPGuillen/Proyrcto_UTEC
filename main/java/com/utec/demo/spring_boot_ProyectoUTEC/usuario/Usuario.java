@@ -7,10 +7,12 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -31,6 +33,11 @@ public class Usuario implements UserDetails {
     @Column(unique = true)
     private String username;
 
+    @NotBlank(message = "El nombre completo del usuario es obligatorio")
+    @Size(min = 15, max = 255, message = "El nombre completo del debe tener entre 15 y 255 caracteres")
+    @Column(unique = true)
+    private String nombreCompleto;
+
     @NotBlank(message = "El email es obligatorio")
     @Email(message = "El email debe tener un formato válido")
     @Column(unique = true)  //para que el usuario no use el correo dos veces
@@ -42,6 +49,13 @@ public class Usuario implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Role role = Role.USER;
+
+    // Se agrega fechaRegistro
+
+    @CreationTimestamp
+    @Column(name = "fecha_registro", updatable = false, nullable = false)
+    private LocalDateTime fechaRegistro;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

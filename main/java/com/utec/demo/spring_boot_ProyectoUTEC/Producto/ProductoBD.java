@@ -11,6 +11,12 @@ public class ProductoBD {
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // Serial
     private Long id;
 
+    // Otros campos de la Entidad
+    private String nombre;
+    private String descripcion;
+    private Double precioBase;
+    private Integer stock;
+
     public Long getId() {
         return id;
     }
@@ -27,12 +33,20 @@ public class ProductoBD {
         this.nombre = nombre;
     }
 
-    public Double getPrecio() {
-        return precio;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setPrecio(Double precio) {
-        this.precio = precio;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Double getPrecioBase() {
+        return precioBase;
+    }
+
+    public void setPrecioBase(Double precioBase) {
+        this.precioBase = precioBase;
     }
 
     public Integer getStock() {
@@ -42,9 +56,4 @@ public class ProductoBD {
     public void setStock(Integer stock) {
         this.stock = stock;
     }
-
-    private String nombre;
-    private Double precio;
-    private Integer stock;
-
 }
