@@ -2,6 +2,7 @@ package com.utec.demo.spring_boot_ProyectoUTEC.Producto;
 
 import com.utec.demo.spring_boot_ProyectoUTEC.Producto.ProductoBD;
 import com.utec.demo.spring_boot_ProyectoUTEC.Producto.ProductoServiceBD;
+import org.hibernate.type.descriptor.jdbc.VarcharJdbcType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -61,7 +62,10 @@ public class ProductoControllerBD {
                             case "stock":
                                 producto.setStock(Integer.valueOf(value.toString()));
                                 break;
-                            // Agrega más campos si es necesario
+                            //    Se agrego campo
+                            case "descripcion":
+                                producto.setDescripcion(String.valueOf(value.toString()));
+                                break;
                         }
                     });
                     return ResponseEntity.ok(productoService.guardar(producto));

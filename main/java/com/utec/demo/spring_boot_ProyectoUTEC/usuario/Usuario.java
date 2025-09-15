@@ -34,7 +34,7 @@ public class Usuario implements UserDetails {
     private String username;
 
     @NotBlank(message = "El nombre completo del usuario es obligatorio")
-    @Size(min = 15, max = 255, message = "El nombre completo del debe tener entre 15 y 255 caracteres")
+    @Size(min = 15, max = 255, message = "El nombre completo debe tener entre 15 y 255 caracteres")
     @Column(unique = true)
     private String nombreCompleto;
 
@@ -53,9 +53,8 @@ public class Usuario implements UserDetails {
     // Se agrega fechaRegistro
 
     @CreationTimestamp
-    @Column(name = "fecha_registro", updatable = false, nullable = false)
-    private LocalDateTime fechaRegistro;
-
+    @Column(name = "fechaRegistro", updatable = false, nullable = false)
+    private LocalDateTime fechaRegistro = LocalDateTime.now();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

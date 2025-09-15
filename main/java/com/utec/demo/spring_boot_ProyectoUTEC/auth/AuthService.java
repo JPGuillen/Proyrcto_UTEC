@@ -31,6 +31,7 @@ public class AuthService {
         }
 
         var usuario = new Usuario();
+        usuario.setNombreCompleto(request.getNombreCompleto());
         usuario.setUsername(request.getUsername());
         usuario.setEmail(request.getEmail());
         usuario.setPassword(request.getPassword());
@@ -44,9 +45,11 @@ public class AuthService {
                 jwtToken,
                 "Bearer",
                 usuario.getId(),
+                usuario.getNombreCompleto(),
                 usuario.getUsername(),
                 usuario.getEmail(),
-                usuario.getRole().name()
+                usuario.getRole().name(),
+                usuario.getFechaRegistro()
         );
     }
 
@@ -66,9 +69,11 @@ public class AuthService {
                     jwtToken,
                     "Bearer",
                     usuario.getId(),
+                    usuario.getNombreCompleto(),
                     usuario.getUsername(),
                     usuario.getEmail(),
-                    usuario.getRole().name()
+                    usuario.getRole().name(),
+                    usuario.getFechaRegistro()
             );
         } catch (BadCredentialsException e) {
             throw new AuthException.InvalidCredentialsException();

@@ -1,11 +1,14 @@
 package com.utec.demo.spring_boot_ProyectoUTEC.auth;
 
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 public class AuthDTO {
 
@@ -27,6 +30,10 @@ public class AuthDTO {
         @NotBlank(message = "El nombre de usuario es obligatorio")
         @Size(min = 3, max = 50, message = "El nombre de usuario debe tener entre 3 y 50 caracteres")
         private String username;
+
+        @NotBlank(message = "El nombre completo del usuario es obligatorio")
+        @Size(min = 15, max = 255, message = "El nombre completo del debe tener entre 15 y 255 caracteres")
+        private String nombreCompleto;
 
         @NotBlank(message = "El email es obligatorio")
         @Email(message = "El email debe tener un formato válido")
@@ -59,6 +66,14 @@ public class AuthDTO {
         public void setPassword(String password) {
             this.password = password;
         }
+
+        public String getNombreCompleto() {
+            return nombreCompleto;
+        }
+
+        public void setNombreCompleto(String nombreCompleto) {
+            this.nombreCompleto = nombreCompleto;
+        }
     }
 
     @Data
@@ -69,8 +84,10 @@ public class AuthDTO {
         private String type = "Bearer";
         private Long id;
         private String username;
+        private String nombreCompleto;
         private String email;
         private String role;
+        private LocalDateTime fechaRegistro;
     }
 
     @Data
